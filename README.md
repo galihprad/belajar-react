@@ -15,7 +15,7 @@ npx creat-react-app myapp
 ```
 ## Component2
 
-### Statefull component
+#### Statefull component
 
 ### Stateless component
 
