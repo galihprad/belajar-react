@@ -13,3 +13,10 @@ Tiga
 npx install create-react-app
 npx creat-react-app myapp
 ```
+## Component2
+
+### Statefull component
+
+### Stateless component
+
+### Lifecycle
