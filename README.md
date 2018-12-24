@@ -17,6 +17,6 @@ npx creat-react-app myapp
 
 #### Statefull component
 
-### Stateless component
+##### Stateless component
 
 ### Lifecycle
