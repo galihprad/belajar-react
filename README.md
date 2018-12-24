@@ -1,9 +1,10 @@
 # belajar-react
 
-##Daftar Isi
-### Satu
-### Dua
-### Tiga
+## Daftar Isi
+Satu
+Dua
+Tiga
+
 
 
 ## Instalasi
