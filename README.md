@@ -18,6 +18,7 @@ npx creat-react-app myapp
 ### React Setup
 ### React Component
 ### State
+cara memanggil `state`
 ```jsx
 class App extends React.Component{
   state={
@@ -35,6 +36,7 @@ class App extends React.Component{
 ```
 
 ### DOM Event
+Jika ingin menambahkan DOMEvent berupa `onClick`, tambahkan fungsi baru `handleClick`
 ```jsx
 class App extends React.Component{
   state={
@@ -55,7 +57,99 @@ class App extends React.Component{
 }
 ```
 ### Change State
-### Forms
+Jika ingin mengubah state, gunakan `this.setState()`
+```jsx
+class App extends React.Component{
+  state={
+    name:'Ani',
+    age: 30
+  }
+  handleClick=(e)=>{
+    this.setState({
+      name: 'Anddy'
+    })
+    console.log(this.state)
+    
+  }
+  render(){
+    return(
+      <div>
+        <h4>My name is {this.state.name} and i am {this.state.age}</h4>
+        <button onClick={this.handleClick}>Click me</button>
+      </div>
+    )
+  }
+}
+```
+### Basic Form
+Jika ingin mengubah state berdasarkan input gunakan `onChange`
+```jsx
+class App extends React.Component{
+  state={
+    name:'Ani',
+    age: 30
+  }
+  handleClick=(e)=>{
+    this.setState({
+      name: 'Anddy'
+    })
+    console.log(this.state)
+  }
+  handleChange=(e)=>{
+     this.setState({
+      name: e.target.value
+     }
+  }
+  render(){
+    return(
+      <div>
+        <h4>My name is {this.state.name} and i am {this.state.age}</h4>
+        <button onClick={this.handleClick}>Click me</button>
+        <form>
+          <input type="text" onChange={this.handleChange}/>
+        </form>
+      </div>
+    )
+  }
+}
+```
+
+untuk mensubmit sebuah form gunakan `onSubmit`
+```jsx
+class App extends React.Component{
+  state={
+    name:'Ani',
+    age: 30
+  }
+  handleClick=(e)=>{
+    this.setState({
+      name: 'Anddy'
+    })
+    console.log(this.state)
+  }
+  handleChange=(e)=>{
+     this.setState({
+      name: e.target.value
+     }
+  }
+  handleSubmit=(e)=>{
+    e.preventDefault(); // Digunakan agar page tidak merefresh
+    console.log('form dubmitted', this.state.name)
+  }
+  render(){
+    return(
+      <div>
+        <h4>My name is {this.state.name} and i am {this.state.age}</h4>
+        <button onClick={this.handleClick}>Click me</button>
+        <form onSubmit={this.handleSubmit}>
+          <input type="text" onChange={this.handleChange}/>
+          <button>Submit</button>
+        </form>
+      </div>
+    )
+  }
+}
+```
 ### Nesting Components
 ### Props
 ### Outputting List
