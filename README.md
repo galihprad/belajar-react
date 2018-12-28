@@ -18,7 +18,42 @@ npx creat-react-app myapp
 ### React Setup
 ### React Component
 ### State
+```jsx
+class App extends React.Component{
+  state={
+    name:'Ani',
+    age: 30
+  }
+  render(){
+    return(
+      <div>
+        <h4>My name is {this.state.name} and i am {this.state.age}</h4>
+      </div>
+    )
+  }
+}
+```
+
 ### DOM Event
+```jsx
+class App extends React.Component{
+  state={
+    name:'Ani',
+    age: 30
+  }
+  handleClick=(e)=>{
+    console.log(this.state)
+  }
+  render(){
+    return(
+      <div>
+        <h4>My name is {this.state.name} and i am {this.state.age}</h4>
+        <button onClick={this.handleClick}>Click me</button>
+      </div>
+    )
+  }
+}
+```
 ### Change State
 ### Forms
 ### Nesting Components
