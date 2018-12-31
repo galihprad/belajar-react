@@ -151,6 +151,48 @@ class App extends React.Component{
 }
 ```
 ### Nesting Components
+
+
+Misalkan dimiliki file `App.js` dan `Profil.js`
+Kita akan menesting component Profil.js ke App.js
+
+
+Profil.js
+```jsx
+class Profil extends React.Component{
+  state={
+    name:'Ani',
+    age: 30
+  }
+  render(){
+    return(
+      <div>
+        <h4>My name is {this.state.name} and i am {this.state.age}</h4>
+      </div>
+    )
+  }
+}
+
+export default Profil
+```
+perhatikan `<Profil/>`
+App.js
+```jsx
+class App extends React.Component{
+  state={
+    name:'Ani',
+    age: 30
+  }
+  render(){
+    return(
+      <div>
+        <h4>My name is {this.state.name} and i am {this.state.age}</h4>
+        <Profil/>
+      </div>
+    )
+  }
+}
+```
 ### Props
 ### Outputting List
 ### Stateless Component
