@@ -160,14 +160,11 @@ Kita akan menesting component Profil.js ke App.js
 Profil.js
 ```jsx
 class Profil extends React.Component{
-  state={
-    name:'Ani',
-    age: 30
-  }
+
   render(){
     return(
       <div>
-        <h4>My name is {this.state.name} and i am {this.state.age}</h4>
+        
       </div>
     )
   }
@@ -175,18 +172,17 @@ class Profil extends React.Component{
 
 export default Profil
 ```
-perhatikan `<Profil/>`
+perhatikan `<Profil/>` dan `import Profil from './Profil'`
+
 App.js
 ```jsx
+import Profil from './Profil'
+
 class App extends React.Component{
-  state={
-    name:'Ani',
-    age: 30
-  }
+
   render(){
     return(
       <div>
-        <h4>My name is {this.state.name} and i am {this.state.age}</h4>
         <Profil/>
       </div>
     )
@@ -194,7 +190,101 @@ class App extends React.Component{
 }
 ```
 ### Props
+Akan ditambahkan 2 buah props pada `<Profil/>` yaitu `name` dan `age`
+
+App.js
+```jsx
+import Profil from './Profil'
+
+class App extends React.Component{
+  render(){
+    return(
+      <div>
+        <Profil name="Andi" age="25"/>
+      </div>
+    )
+  }
+}
+```
+lalu kedua buah props tersebut dapat diakses di `Profil.js` dengan cara `this.props`
+
+Profil.js
+```jsx
+class Profil extends React.Component{
+
+  render(){
+    return(
+      <div>
+        Name={this.props.name}
+        Age={this.props.age}
+      </div>
+    )
+  }
+}
+
+export default Profil
+```
 ### Outputting List
+bagaimana jika `props` nya banyak data?
+
+Semisal di `App.js` sebagai berikut:
+```jsx
+import Profil from './Profil'
+
+class App extends React.Component{
+  state={
+    profils:[
+    {name: 'Ani', age: 30, id:1},
+    {name: 'Adi', age: 20, id:2},
+    {name: 'Ari', age: 25, id:3},
+    ]
+  }
+  render(){
+    return(
+      <div>
+        <Profil profils={this.state.profils}>
+      </div>
+    )
+  }
+}
+```
+terdapat array `state={profils:[...]}` yang akan kita pakai sebagai `props`. 
+
+Lalu array tersebut dipanggil dengan `<Profil profils={this.state.profils}>`
+
+Lalu di `Profil.js` array tersebut akan dikeluarkan menggunakan `map`:
+```jsx
+class Profil extends React.Component{
+
+  render(){
+    const{ profils }=this.props;
+    const profilList=profils.map(
+      profil=>{
+        <div key={profil.id}>
+          Name={profil.name}
+          Age={profil.age}
+        </div>
+      }
+    )
+    return(
+      <div>
+        { profilList }
+      </div>
+    )
+  }
+}
+
+export default Profil
+```
+pada `Profil.js` tersebut dibuat const baru  `profilList`.
+
+Setiap data akan dikeluarkan satu persatu menggunakan `map`
+
+Lalu dioutput menggunakan `{profilList}`
+
+> **Note**: setiap hasil `map` harus memiliki `key` yang unik, sebagai contoh, bisa digunakan `id`
+
+
 ### Stateless Component
 ### Conditional Output
 ### Forms
