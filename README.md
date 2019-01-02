@@ -286,6 +286,68 @@ Lalu dioutput menggunakan `{profilList}`
 
 
 ### Stateless Component
+terdapat 2 jenis component pada React JS, yaitu Continer component dan UI Component
+
+Cotainer Component:
+* contain state
+* contain lifecycle hooks
+* not concern with UI
+* use classes
+
+UI component
+* not contain state
+* receive data from props
+* concern with UI
+* use function to create
+
+Container component
+
+```jsx
+class Profil extends React.Component{
+
+  render(){
+    const{ profils }=this.props;
+    const profilList=profils.map(
+      profil=>{
+        <div key={profil.id}>
+          Name={profil.name}
+          Age={profil.age}
+        </div>
+      }
+    )
+    return(
+      <div>
+        { profilList }
+      </div>
+    )
+  }
+}
+
+export default Profil
+```
+UI component
+```jsx
+const Profil =(props)=>{
+    const{ profils }=props;
+    const profilList=profils.map(
+      profil=>{
+        <div key={profil.id}>
+          Name={profil.name}
+          Age={profil.age}
+        </div>
+      }
+    )
+    return(
+      <div>
+        { profilList }
+      </div>
+    )
+  
+}
+
+export default Profil
+```
+
 ### Conditional Output
 ### Forms
 ### Functions as props
