@@ -349,7 +349,7 @@ export default Profil
 ```
 
 ### Conditional Output
-### Forms next
+### Forms 
 ```jsx
 class AddProfil extends Component{
   state={
@@ -387,6 +387,83 @@ class AddProfil extends Component{
   
 ```
 ### Functions as props
+kita dapat menurunkan function berupa props, 
+atau untuk memanggil props dari child ke parrent,
+```jsx
+class App extends Component{
+  state={
+    profils:[
+      {name: 'Andi', age='20'},
+      {name: 'Anti', age='30'}
+    ]
+  }
+  
+  //fungsi ini akan diturunkan sebagai props
+  addProfil=(profil)=>{
+  
+     //id digenerate secara random saja biar gampang
+    profil.id=Math.random(); 
+    
+     // mencopy setiap elemen di array profils, ke array baru
+    let profils=[...this.state.profils, profil]
+    
+    this.setState({
+      profils=profils
+    })
+  }
+  render(){
+    return(
+      <div className="App">
+        <Profils profils={this.state.profil}/>
+        <AddProfil addProfil={this.addProfil} />
+      </div>
+    )
+  }
+
+}
+
+```
+fungsi `addProfil` diturunkan sebagai props
+
+```jsx
+class AddProfil extends Component{
+  state={
+    name: null,
+    age: null,
+  }
+  
+  //untuk mengeset nilai state agar sama dengan isi form
+  handleChange=(e)=>{    
+    this.setState({
+      [e.target.id]:e.target.value
+    })
+  }
+  
+  //nilai yg di disubmit ke App.js
+  handleSubmit=(e)=>{
+    e.preventDefault();
+    this.props.addNinja(this.state)
+  }
+  render(){
+    return(
+      <div>
+        <form onSubmit={this.handleSubmit}>
+          <label htmlFor="name">Name :</label>
+          <input type="text" id="name" onChange={this.handleChange}/>
+          <label htmlFor="age">Age :</label>
+          <input type="text" id="age" onChange={this.handleChange}/>
+          <button>Submit</button>
+         </form>
+      </div>
+    )
+  }
+  
+  export default AddProfil
+  
+```
+
+hasil submit akan dipanggil di `App.js`
+
 ### delete Data
 ### CSS
 ### Lifecycle Method
