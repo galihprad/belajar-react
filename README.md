@@ -349,7 +349,43 @@ export default Profil
 ```
 
 ### Conditional Output
-### Forms
+### Forms next
+```jsx
+class AddProfil extends Component{
+  state={
+    name: null,
+    age: null,
+  }
+  
+  //untuk mengeset nilai state agar sama dengan isi form
+  handleChange=(e)=>{    
+    this.setState({
+      [e.target.id]:e.target.value
+    })
+  }
+  
+  //nilai yg di disubmit akan dikeluarkan di console
+  handleSubmit=(e)=>{
+    e.preventDefault();
+    console.log(this.state);
+  }
+  render(){
+    return(
+      <div>
+        <form onSubmit={this.handleSubmit}>
+          <label htmlFor="name">Name :</label>
+          <input type="text" id="name" onChange={this.handleChange}/>
+          <label htmlFor="age">Age :</label>
+          <input type="text" id="age" onChange={this.handleChange}/>
+          <button>Submit</button>
+         </form>
+      </div>
+    )
+  }
+  
+  export default AddProfil
+  
+```
 ### Functions as props
 ### delete Data
 ### CSS
