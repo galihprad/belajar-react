@@ -215,8 +215,8 @@ class Profil extends React.Component{
   render(){
     return(
       <div>
-        Name={this.props.name}
-        Age={this.props.age}
+        Name:{this.props.name}
+        Age:{this.props.age}
       </div>
     )
   }
@@ -261,8 +261,8 @@ class Profil extends React.Component{
     const profilList=profils.map(
       profil=>{
         <div key={profil.id}>
-          Name={profil.name}
-          Age={profil.age}
+          Name:{profil.name}
+          Age:{profil.age}
         </div>
       }
     )
@@ -310,8 +310,8 @@ class Profil extends React.Component{
     const profilList=profils.map(
       profil=>{
         <div key={profil.id}>
-          Name={profil.name}
-          Age={profil.age}
+          Name:{profil.name}
+          Age:{profil.age}
         </div>
       }
     )
@@ -332,8 +332,8 @@ const Profil =(props)=>{
     const profilList=profils.map(
       profil=>{
         <div key={profil.id}>
-          Name={profil.name}
-          Age={profil.age}
+          Name:{profil.name}
+          Age:{profil.age}
         </div>
       }
     )
