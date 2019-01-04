@@ -442,7 +442,7 @@ class AddProfil extends Component{
   //nilai yg di disubmit ke App.js
   handleSubmit=(e)=>{
     e.preventDefault();
-    this.props.addNinja(this.state)
+    this.props.addProfil(this.state)
   }
   render(){
     return(
@@ -465,6 +465,80 @@ class AddProfil extends Component{
 hasil submit akan dipanggil di `App.js`
 
 ### delete Data
+ditambahkan fungsi `deleteProfil` pada `App.js`, lalu diturunkan sebagai props, 
+
+digunakan fungsi `filter` untuk mendelete data
+
+App.js
+```jsx
+class App extends Component{
+  state={
+    profils:[
+      {name: 'Andi', age='20'},
+      {name: 'Anti', age='30'}
+    ]
+  }
+  
+  //fungsi ini akan diturunkan sebagai props
+  addProfil=(profil)=>{
+  
+     //id digenerate secara random saja biar gampang
+    profil.id=Math.random(); 
+    
+     // mencopy setiap elemen di array profils, ke array baru
+    let profils=[...this.state.profils, profil]
+    
+    this.setState({
+      profils=profils
+    })
+  }
+  
+  deleteProfil=(id)=>{
+    let profils=this.state.profils.filter(profil=>{
+      return profil.id! == id
+    });
+    this.setState({
+      profils=profils
+    })
+  }
+  render(){
+    return(
+      <div className="App">
+        <Profils deleteProfil={this.deleteProfil} profils={this.state.profil}/>
+        <AddProfil addProfil={this.addProfil} />
+      </div>
+    )
+  }
+
+}
+
+```
+lalu pada `Profil.js` ditambahkan button untul delete
+```jsx
+const Profil =(props)=>{
+    const{ profils, deleteProfil }=props;
+    const profilList=profils.map(
+      profil=>{
+        <div key={profil.id}>
+          Name:{profil.name}
+          Age:{profil.age}
+          <button onClick={()=>{deleteNinja(ninja.id)}}></button>
+          // diberi ()=> agar tidak selalu terpanggil otomatis
+        </div>
+        
+      }
+    )
+    return(
+      <div>
+        { profilList }
+      </div>
+    )
+  
+}
+
+export default Profil
+```
+
 ### CSS
 ### Lifecycle Method
 ### React Router
